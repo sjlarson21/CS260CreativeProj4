@@ -8,23 +8,31 @@
 
 <body>
     <div class="header">
+        <!-- <div class="hiker">
+            <img src="./images/hiker.png">
+        </div> -->
         <div class="title">
             <h2>UTAH VALLEY HIKES</h2>
         </div>
     </div>
-    <!-- <div id="app" class="content">
+    <div id="app" class="content">
         <section class="hike-gallery">
-            <div class="image" v-for="hike in items">
+            <div class="image" v-for="hike in hikes">
                 <h2>{{hike.title}}</h2>
-                <img :src="item.path" />
-                <h2>{{hike.description}}</h2>
+                <img :src="hike.path" />
+                <h2>{{hike.location}}</h2>
+                <!-- EMBED MAP -->
+                <!-- CHECKBOX FUNCTION -->
             </div>
         </section>
-    </div> -->
+    </div>
     <div class="footer">
         <a href="./admin.html">ADMIN</a>
-        <a href="">GITHUB</a>
+        <a href="https://github.com/sjlarson21/CS260CreativeProj4">GITHUB</a>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.7/vue.js" integrity="sha256-g+Q8DFAmG5+eyRPSydX0LY4TfjsL11XSDrIGerbbEdA=" crossorigin="anonymous"></script>
+    <script src="./script.js"></script>
 </body>
 
 </html>

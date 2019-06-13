@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="./styles.css"/>
+    <title>UTAH VALLEY HIKES PORTAL</title>
+</head>
+
+<body>
+    <div id="admin" class="content">
+        <h1>UTAH VALLEY HIKES</h1>
+    
+        <div class="heading">
+            <div class="circle">1</div>
+            <h2>ENTER A HIKE</h2>
+        </div>
+        <div class="add">
+            <div class="form">
+                <input v-model="title" placeholder="TITLE">
+                <p></p>
+                <input v-model="location" placeholder="LOCATION">
+                <p></p>
+                <select v-model="selected">
+                    <option disabled value="">PLEASE SELECT A HIKE PHOTO TO ADD</option>
+                    <option v-for="photo in photos" :key="photo.id" :value="photo">{{photo.name}}</option>
+                </select>
+                <!-- <textarea v-model="location">ENTER LOCATION</textarea> -->
+                <button @click="addNewHike">ADD HIKE</button>
+            </div>
+            <div class="upload" v-if="addHike">
+                <h2>{{addHike.title}}</h2>
+                <img :src="addHike.path" />
+            </div>
+        </div>
+        <div class="heading">
+            <div class="circle">2</div>
+            <h2>EDIT/DELETE A HIKE</h2>
+        </div>
+        <div class="edit">
+            <div class="form">
+                <input v-model="findTitle" placeholder="SEARCH">
+                <div class="suggestions" v-if="suggestions.length > 0">
+                    <div class="suggestion" v-for="s in suggestions" @click="selectHike(s)">{{s.title}}</div>
+                </div>
+                
+                <div class="upload" v-if="findHike">
+                    <input v-model="findHike.title">
+                    <textarea v-model="findHike.location"></textarea>
+                    <p></p>
+                    <img :src="findHike.path" />
+                </div>
+                <div class="actions" v-if="findHike">
+                    <button @click="deleteHike(findHike)">DELETE</button>
+                    <button @click="editHike(findHike)">EDIT</button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.7/vue.js" integrity="sha256-g+Q8DFAmG5+eyRPSydX0LY4TfjsL11XSDrIGerbbEdA=" crossorigin="anonymous"></script>
+    <script src="./admin.js"></script>
+</body>
+
+</html>
